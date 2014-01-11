@@ -18,4 +18,8 @@ module Exceptions
   class NotAuthenticated < ErrorWithDefaultMessage
     default_message "Not Authenticated"
   end
+
+  class AuthenticationFailed < ErrorWithDefaultMessage
+    default_message "Invalid Email / Password"
+  end
 end
