@@ -30,6 +30,7 @@ GEM
     arel (4.0.1)
     atomic (1.1.14)
     awesome_print (1.2.0)
+    bcrypt-ruby (3.0.1)
     better_errors (1.0.1)
       coderay (>= 1.0.0)
       erubis (>= 2.6.6)
@@ -49,6 +50,7 @@ GEM
     debugger-ruby_core_source (1.2.3)
     diff-lcs (1.2.5)
     diffy (3.0.1)
+    docile (1.1.1)
     doorkeeper (0.7.3)
       jquery-rails (>= 2.0.2)
       railties (>= 3.1)
@@ -146,6 +148,11 @@ GEM
       sneaky-save
     shoulda-matchers (2.4.0)
       activesupport (>= 3.0.0)
+    simplecov (0.8.2)
+      docile (~> 1.1.0)
+      multi_json
+      simplecov-html (~> 0.8.0)
+    simplecov-html (0.8.0)
     slop (3.4.6)
     sneaky-save (0.0.4)
       activerecord (>= 3.2.0)
@@ -174,6 +181,7 @@ PLATFORMS
 
 DEPENDENCIES
   active_model_serializers
+  bcrypt-ruby (~> 3.0.0)
   better_errors
   database_cleaner
   doorkeeper (~> 0.7.0)
@@ -184,4 +192,5 @@ DEPENDENCIES
   rspec-rails (>= 2.0.1)
   rspec_candy
   shoulda-matchers
+  simplecov
   spork (~> 1.0rc)
