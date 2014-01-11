@@ -6,6 +6,10 @@ class Api::V1::UsersController < Api::V1::ApplicationController
     render json: user
   end
 
+  def me
+    render json: current_user
+  end
+
   private
 
   def user_params

@@ -1,5 +1,5 @@
 shared_context 'api_controller_context' do
-  let(:current_user) { stub_model User, email: 'sambya@aryasa.net', id: 42 }
+  let(:current_user) { stub_model User, email: 'sambya@aryasa.net', id: 42, name: 'sam' }
   let(:token) { double :accessible? => true, resource_owner_id: current_user.id }
 
   before do

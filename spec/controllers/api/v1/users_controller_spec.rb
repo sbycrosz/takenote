@@ -36,4 +36,22 @@ describe Api::V1::UsersController do
       end
     end
   end
+
+  describe 'GET #me' do
+    it 'respond_with 200' do
+      get :me
+      expect(response.status).to eql(200)
+    end
+
+    it 'render current user' do
+      get :me
+      expected_response = 
+        {
+          id: 42,
+          name: 'sam',
+          email: 'sambya@aryasa.net'
+        }
+      expect(response.body).to include(expected_response.to_json)
+    end
+  end
 end
