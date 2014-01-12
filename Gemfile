@@ -10,6 +10,12 @@ gem 'bcrypt-ruby', '~> 3.0.0'
 
 gem "active_model_serializers"
 
+group :development do
+  gem 'guard-rspec', require: false
+  gem 'guard-spork'
+  gem 'terminal-notifier-guard'
+end
+
 group :development, :test do
   gem 'jazz_hands'
   gem 'better_errors'
