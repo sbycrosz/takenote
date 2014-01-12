@@ -3,7 +3,9 @@ class Api::V1::UsersController < Api::V1::ApplicationController
 
   def create
     user = User.create!(user_params)
-    render json: user
+    token = AccessToken.issue_for(user)
+    sign_in_response = SignInResponse.new(user, token)
+    render json: sign_in_response
   end
 
   def me

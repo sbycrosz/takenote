@@ -3,14 +3,16 @@ require 'spec_helper'
 describe Api::V1::SessionsController do
   include_context 'api_controller_context'
 
+  let(:user) {stub_model User, id: 42, name: 'aabb', email: 'aa@b.com'}
   let(:access_token) {stub_model AccessToken, token: 'wololo'}
+  let(:sign_in_response) {SignInResponse.new(user, access_token)}
 
   describe 'POST #create' do
     let(:params){{}}
 
     context 'when succeed' do
       before do
-        SessionCreationService.any_instance.stub(:create).and_return(access_token)
+        SessionCreationService.any_instance.stub(:create).and_return(sign_in_response)
       end
 
       it 'render 200' do
@@ -18,14 +20,20 @@ describe Api::V1::SessionsController do
         expect(response.status).to eql(200)  
       end
 
-      it 'render an access_token' do
+      it 'render a sign_in_response object' do
         post :create, params
-        expected_response = 
-            {
-              access_token: 'wololo',
+        expected_response = {
+            user: {
+                id: user.id,
+                name: user.name,
+                email: user.email
+              },
+            access_token: {
+              access_token: access_token.token,
               token_type: 'bearer'
             }
-        expect(response.body).to include(expected_response.to_json)
+          }
+        expect(response.body).to eql(expected_response.to_json)
       end
     end
 
