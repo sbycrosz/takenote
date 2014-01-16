@@ -28,5 +28,12 @@ module Takenote
 
     config.autoload_paths += %W(#{config.root}/app/services)
     config.autoload_paths += %W(#{config.root}/lib/)
+
+    config.middleware.use Rack::Cors do
+      allow do
+        origins 'localhost:8000'
+        resource '*', :headers => :any, :methods => [:get, :post, :options]
+      end
+    end
   end
 end
