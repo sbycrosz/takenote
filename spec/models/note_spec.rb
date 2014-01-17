@@ -7,5 +7,7 @@ describe Note do
 
   describe 'Association' do
     it { should belong_to(:user) }
+    it { should have_many(:tag_objects) }
+    it { should have_many(:note_tags) }
   end
 end

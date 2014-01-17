@@ -8,5 +8,6 @@ describe User do
 
   describe 'Association' do
     it { should have_many(:notes) }
+    it { should have_many(:tags) }
   end
 end

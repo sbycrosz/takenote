@@ -15,3 +15,11 @@ end
 Note.blueprint do
   # Attributes here
 end
+
+Tag.blueprint do
+  # Attributes here
+end
+
+NoteTag.blueprint do
+  # Attributes here
+end

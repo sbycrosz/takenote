@@ -23,7 +23,8 @@ describe Api::V1::NotesController do
         {
           id: note.id,
           title: note.title,
-          content: note.content
+          content: note.content,
+          tags: []
         }
       expect(response.body).to include(expected_response.to_json)
     end
@@ -31,11 +32,12 @@ describe Api::V1::NotesController do
 
   describe 'GET #index' do
     let(:note1){stub_model Note, id: 132, title: 'title', content: 'content'}
-    let(:note2){stub_model Note, id: 134, title: 'title2', content: 'content2'}
+    let(:note2){stub_model Note, id: 134, title: 'title2', content: 'content2', tag_objects: [tag]}
+    let(:tag){stub_model Tag, name: "tagname"}
     let(:notes){[note1, note2]}
 
     before do
-      current_user.stub(:notes).and_return(notes)
+      current_user.stub_chain(:notes, :include_tags).and_return(notes)
     end
 
     it 'respond_with 200' do
@@ -49,12 +51,14 @@ describe Api::V1::NotesController do
         [{
           id: note1.id,
           title: note1.title,
-          content: note1.content
+          content: note1.content,
+          tags: []
         },
         {
           id: note2.id,
           title: note2.title,
-          content: note2.content
+          content: note2.content,
+          tags: [tag.name]
         }]
       expect(response.body).to include(expected_response.to_json)
     end
@@ -80,7 +84,8 @@ describe Api::V1::NotesController do
         {
           id: note.id,
           title: note.title,
-          content: note.content
+          content: note.content,
+          tags: []
         }
       expect(response.body).to include(expected_response.to_json)
     end

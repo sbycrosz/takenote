@@ -2,7 +2,7 @@ class Api::V1::NotesController < Api::V1::ApplicationController
   before_filter :fetch_notes
 
   def index 
-    render json: @notes
+    render json: @notes.include_tags
   end
 
   def create
@@ -28,6 +28,9 @@ class Api::V1::NotesController < Api::V1::ApplicationController
   end
 
   def notes_params
-    params.permit(:title, :content)
+    # this is a hack for Rails converting empty arrays into nils in params
+    params[:tags] ||= [] if params.has_key?(:tags) 
+    # end hack
+    params.permit(:title, :content, tags: [])
   end
 end

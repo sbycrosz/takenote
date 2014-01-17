@@ -11,7 +11,17 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140117045537) do
+ActiveRecord::Schema.define(version: 20140117061951) do
+
+  create_table "note_tags", force: true do |t|
+    t.integer  "note_id"
+    t.integer  "tag_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "note_tags", ["note_id"], name: "index_note_tags_on_note_id", using: :btree
+  add_index "note_tags", ["tag_id"], name: "index_note_tags_on_tag_id", using: :btree
 
   create_table "notes", force: true do |t|
     t.string   "title"
@@ -61,6 +71,16 @@ ActiveRecord::Schema.define(version: 20140117045537) do
   end
 
   add_index "oauth_applications", ["uid"], name: "index_oauth_applications_on_uid", unique: true, using: :btree
+
+  create_table "tags", force: true do |t|
+    t.string   "name"
+    t.integer  "user_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "tags", ["name"], name: "index_tags_on_name", using: :btree
+  add_index "tags", ["user_id"], name: "index_tags_on_user_id", using: :btree
 
   create_table "users", force: true do |t|
     t.string   "email"
