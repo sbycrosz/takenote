@@ -11,7 +11,17 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140111145702) do
+ActiveRecord::Schema.define(version: 20140117045537) do
+
+  create_table "notes", force: true do |t|
+    t.string   "title"
+    t.text     "content"
+    t.integer  "user_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "notes", ["user_id"], name: "index_notes_on_user_id", using: :btree
 
   create_table "oauth_access_grants", force: true do |t|
     t.integer  "resource_owner_id",              null: false
