@@ -62,4 +62,32 @@ describe Api::V1::UsersController do
       expect(response.body).to include(expected_response.to_json)
     end
   end
+
+  describe 'PUT #update' do
+    let(:params){{}}
+    before do
+      current_user.stub(:update!)
+    end
+
+    it 'update current_user' do
+      current_user.should_receive(:update!)
+      put :update, params
+    end
+
+    it 'respond_with 200' do
+      put :update, params
+      expect(response.status).to eql(200)
+    end
+
+    it 'render updated user' do
+      put :update, params
+      expected_response = 
+        {
+          id: 42,
+          name: 'sam',
+          email: 'sambya@aryasa.net'
+        }
+      expect(response.body).to include(expected_response.to_json)
+    end
+  end
 end

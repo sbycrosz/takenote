@@ -11,6 +11,7 @@ Takenote::Application.routes.draw do
       delete '/notes/:id', to: 'notes#destroy'
 
       get 'me', to: 'users#me'
+      put 'me', to: 'users#update'
     end
   end
 end
