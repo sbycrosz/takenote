@@ -40,4 +40,17 @@ describe Api::V1::SessionsController do
       end
     end
   end
+
+  describe 'DELETE #destroy' do
+    it 'respond_with 200' do
+      delete :destroy
+      expect(response.status).to eql(200)
+    end
+
+    it 'destroy the token' do
+      doorkeeper_token.should_receive(:destroy)
+      delete :destroy
+    end
+  end
+
 end
