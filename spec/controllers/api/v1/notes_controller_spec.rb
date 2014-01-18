@@ -93,16 +93,26 @@ describe Api::V1::NotesController do
 
   describe 'DELETE #delete' do
     let(:params){{id: 132}}
-    let(:note){stub_model Note, id: 132, title: 'title', content: 'content'}
 
-    before do
-      current_user.stub_chain(:notes, :find).and_return(note)
-      note.stub(:destroy)
+    context 'when succeed' do
+      let(:note){stub_model Note, id: 132, title: 'title', content: 'content'}
+
+      before do
+        current_user.stub_chain(:notes, :find).and_return(note)
+        note.stub(:destroy)
+      end
+
+      it 'respond_with 200' do
+        delete :destroy, params
+        expect(response.status).to eql(200)
+      end
     end
 
-    it 'respond_with 200' do
-      delete :destroy, params
-      expect(response.status).to eql(200)
+    context 'when failed' do
+      it 'respond_with 404' do
+        delete :destroy, params
+        expect(response.status).to eql(404)
+      end
     end
   end
 end
