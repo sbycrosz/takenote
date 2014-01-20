@@ -29,7 +29,7 @@ describe Api::V1::UsersController do
                 email: user.email
               },
             access_token: {
-              access_token: access_token.token,
+              token: access_token.token,
               token_type: 'bearer'
             }
           }
