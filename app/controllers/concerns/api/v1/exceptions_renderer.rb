@@ -6,7 +6,7 @@ module Api::V1::ExceptionsRenderer
   end
 
   def render_invalid_record(e)
-    message = e.record.errors.full_messages.join(", ")
+    message = e.record.errors
     render_error message, :unprocessable_entity
   end
 
