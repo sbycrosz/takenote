@@ -32,7 +32,7 @@ module Takenote
     config.middleware.use Rack::Cors do
       allow do
         origins 'localhost:8000'
-        resource '*', :headers => :any, :methods => [:get, :post, :options]
+        resource '*', :headers => :any, :methods => [:get, :post, :put, :delete, :options]
       end
     end
   end
