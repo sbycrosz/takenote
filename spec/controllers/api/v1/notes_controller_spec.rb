@@ -24,7 +24,8 @@ describe Api::V1::NotesController do
           id: note.id,
           title: note.title,
           content: note.content,
-          tags: []
+          tags: [],
+          updated_at: 0
         }
       expect(response.body).to include(expected_response.to_json)
     end
@@ -52,13 +53,15 @@ describe Api::V1::NotesController do
           id: note1.id,
           title: note1.title,
           content: note1.content,
-          tags: []
+          tags: [],
+          updated_at: 0
         },
         {
           id: note2.id,
           title: note2.title,
           content: note2.content,
-          tags: [tag.name]
+          tags: [tag.name],
+          updated_at: 0
         }]
       expect(response.body).to include(expected_response.to_json)
     end
@@ -85,7 +88,8 @@ describe Api::V1::NotesController do
           id: note.id,
           title: note.title,
           content: note.content,
-          tags: []
+          tags: [],
+          updated_at: 0
         }
       expect(response.body).to include(expected_response.to_json)
     end
