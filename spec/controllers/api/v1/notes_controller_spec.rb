@@ -6,7 +6,7 @@ describe Api::V1::NotesController do
 
   describe 'POST #create' do
     let(:params){{}}
-    let(:note){stub_model Note, id: 132, title: 'title', content: 'content'}
+    let(:note){stub_model Note, id: 132, title: 'title', body: 'body'}
 
     before do
       current_user.stub_chain(:notes, :create!).and_return(note)
@@ -23,7 +23,7 @@ describe Api::V1::NotesController do
         {
           id: note.id,
           title: note.title,
-          content: note.content,
+          body: note.body,
           tags: [],
           updated_at: 0
         }
@@ -32,8 +32,8 @@ describe Api::V1::NotesController do
   end
 
   describe 'GET #index' do
-    let(:note1){stub_model Note, id: 132, title: 'title', content: 'content'}
-    let(:note2){stub_model Note, id: 134, title: 'title2', content: 'content2', tag_objects: [tag]}
+    let(:note1){stub_model Note, id: 132, title: 'title', body: 'body'}
+    let(:note2){stub_model Note, id: 134, title: 'title2', body: 'body2', tag_objects: [tag]}
     let(:tag){stub_model Tag, name: "tagname"}
     let(:notes){[note1, note2]}
 
@@ -52,14 +52,14 @@ describe Api::V1::NotesController do
         [{
           id: note1.id,
           title: note1.title,
-          content: note1.content,
+          body: note1.body,
           tags: [],
           updated_at: 0
         },
         {
           id: note2.id,
           title: note2.title,
-          content: note2.content,
+          body: note2.body,
           tags: [tag.name],
           updated_at: 0
         }]
@@ -69,7 +69,7 @@ describe Api::V1::NotesController do
 
   describe 'PUT #update' do
     let(:params){{id: 132}}
-    let(:note){stub_model Note, id: 132, title: 'title', content: 'content'}
+    let(:note){stub_model Note, id: 132, title: 'title', body: 'body'}
 
     before do
       current_user.stub_chain(:notes, :find).and_return(note)
@@ -87,7 +87,7 @@ describe Api::V1::NotesController do
         {
           id: note.id,
           title: note.title,
-          content: note.content,
+          body: note.body,
           tags: [],
           updated_at: 0
         }
@@ -99,7 +99,7 @@ describe Api::V1::NotesController do
     let(:params){{id: 132}}
 
     context 'when succeed' do
-      let(:note){stub_model Note, id: 132, title: 'title', content: 'content'}
+      let(:note){stub_model Note, id: 132, title: 'title', body: 'body'}
 
       before do
         current_user.stub_chain(:notes, :find).and_return(note)

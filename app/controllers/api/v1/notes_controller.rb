@@ -31,6 +31,6 @@ class Api::V1::NotesController < Api::V1::ApplicationController
     # this is a hack for Rails converting empty arrays into nils in params
     params[:tags] ||= [] if params.has_key?(:tags) 
     # end hack
-    params.permit(:title, :content, tags: [])
+    params.permit(:title, :body, tags: [])
   end
 end
