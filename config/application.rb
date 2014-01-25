@@ -31,7 +31,7 @@ module Takenote
 
     config.middleware.use Rack::Cors do
       allow do
-        origins 'localhost:8000'
+        origins 'localhost:8000', 'embernote.herokuapp.com'
         resource '*', :headers => :any, :methods => [:get, :post, :put, :delete, :options]
       end
     end
