@@ -1,0 +1,14 @@
+language: ruby
+rvm:
+  - "2.0.0"
+env:
+  - "RAILS_VERSION=4.0.0"
+script:
+  - RAILS_ENV=test bundle exec rake db:migrate --trace
+  - RAILS_ENV=test bundle exec rake doorkeeper:create_application --trace
+  - bundle exec rake
+bundler_args: 
+  --without development
+before_script:
+  - cp config/database.travis.yml config/database.yml
+  - mysql -e 'create database takenote_test;'

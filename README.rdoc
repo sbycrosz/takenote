@@ -1,28 +1,38 @@
-== README
+== TakeNote Backend
+{<img src="https://travis-ci.org/sbycrosz/takenote-backend.png?branch=develop" alt="Build Status" />}[https://travis-ci.org/sbycrosz/takenote-backend]
+{<img src="https://codeclimate.com/github/sbycrosz/takenote-backend.png" />}[https://codeclimate.com/github/sbycrosz/takenote-backend]
+{<img src="https://coveralls.io/repos/sbycrosz/takenote-backend/badge.png?branch=develop" alt="Coverage Status" />}[https://coveralls.io/r/sbycrosz/takenote-backend?branch=develop]
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+TakeNote is a note taking application based on Evernote.  
 
-Things you may want to cover:
+=== Dependency
 
-* Ruby version
+* Ruby 2.0.0
 
-* System dependencies
+=== API Documentations
 
-* Configuration
+API documentation is available on http://docs.takenote.apiary.io/
 
-* Database creation
+=== Installation
 
-* Database initialization
+Clone this repository  
+Install the dependencies  
+ $ bundle
+Setup database
+ $ cp config/database.example.yml config/database.yml
+ $ rake db:setup
+Create OAuth Application
+ $ rake doorkeeper:create_application
+And finally run the server
+ $ rails s -p 5000
 
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
-
-
-Please feel free to use a different markup language if you do not plan to run
-<tt>rake doc:app</tt>.
+==== Testing
+All tests follow the RSpec format. They can be run with:
+ rspec spec/  
+or run guard to run test automatically
+ guard -g backend  
+ 
+=== Todo
+* Create demo site on heroku
+* Finish the Ember js frontend
+* Add guest user login
