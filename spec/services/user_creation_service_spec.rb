@@ -11,6 +11,12 @@ describe UserCreationService do
     before do
       User.stub(:create!).and_return(user)
       AccessToken.stub(:issue_for).with(user).and_return(access_token)
+      user.stub(:create_welcome_notes)
+    end
+
+    it 'create proper welcome note' do
+      user.should_receive(:create_welcome_notes)
+      service.create
     end
 
     it 'return proper SignInResponse object' do
