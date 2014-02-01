@@ -14,4 +14,5 @@ Takenote::Application.routes.draw do
       put 'me', to: 'users#update'
     end
   end
+  root :to => 'static#index'
 end
