@@ -7,12 +7,14 @@ describe Api::V1::UsersController do
     let(:params){{}}
     
     context 'when succeed' do
+      let!(:service) {UserCreationService.new(params)}
       let(:user) {stub_model User, id: 42, name: 'aabb', email: 'aa@b.com'}
-      let(:access_token) {stub_model AccessToken, token: 'wololo'}
+      let(:access_token) {stub_model AccessToken, token: 'wololo'}  
+      let(:sign_in_response) {SignInResponse.new(user, access_token)}
 
       before do
-        User.stub(:create!).and_return(user)
-        AccessToken.stub(:issue_for).with(user).and_return(access_token)
+        UserCreationService.stub(:new).and_return(service)
+        service.stub(:create).and_return(sign_in_response)
       end
 
       it 'respond_with 200' do

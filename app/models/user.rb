@@ -10,6 +10,7 @@ class User < ActiveRecord::Base
   has_many :notes
   has_many :tags
 
+  delegate :create_welcome_notes, to: :notes
   private
 
   def validates_old_password

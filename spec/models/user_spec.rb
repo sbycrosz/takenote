@@ -18,4 +18,18 @@ describe User do
     it { should have_many(:notes) }
     it { should have_many(:tags) }
   end
+
+  describe 'create_default_notes' do
+    let(:user) {stub_model User, id: 43}
+    let(:notes) {user.notes}
+    
+    before do
+      notes.stub(:create_default_notes)
+    end
+
+    it 'delegate create_welcome_notes to notes' do
+      notes.should_receive(:create_welcome_notes)
+      user.create_welcome_notes
+    end
+  end
 end

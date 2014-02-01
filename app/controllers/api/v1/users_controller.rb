@@ -2,10 +2,9 @@ class Api::V1::UsersController < Api::V1::ApplicationController
   skip_before_filter :authenticate_user!, only: :create
 
   def create
-    user = User.create!(user_params)
-    token = AccessToken.issue_for(user)
-    sign_in_response = SignInResponse.new(user, token)
-    render json: sign_in_response
+    UserCreationService.new(user_params).create.tap do |sign_in_response|
+      render json: sign_in_response
+    end
   end
 
   def me
