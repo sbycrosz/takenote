@@ -1,4 +1,4 @@
-== EmberNote Backend
+== EmberNote
 {<img src="https://travis-ci.org/sbycrosz/takenote-backend.png?branch=develop" alt="Build Status" />}[https://travis-ci.org/sbycrosz/takenote-backend]
 {<img src="https://codeclimate.com/github/sbycrosz/takenote-backend.png" />}[https://codeclimate.com/github/sbycrosz/takenote-backend]
 {<img src="https://coveralls.io/repos/sbycrosz/takenote-backend/badge.png?branch=develop" alt="Coverage Status" />}[https://coveralls.io/r/sbycrosz/takenote-backend?branch=develop]
