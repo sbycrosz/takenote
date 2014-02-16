@@ -2,6 +2,7 @@ Takenote::Application.routes.draw do
   namespace :api do
     namespace :v1 do
       post '/sign_up', to: 'users#create'
+      post '/guest_sign_in', to: 'users#create_guest_account'
       post '/sign_in', to: 'sessions#create'
       delete '/sign_out', to: 'sessions#destroy'
 
