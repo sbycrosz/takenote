@@ -47,6 +47,42 @@ describe Api::V1::UsersController do
     end
   end
 
+  describe 'POST #create_guest_account' do    
+    context 'when succeed' do
+      let!(:service) {UserCreationService.new}
+      let(:user) {stub_model User, id: 42, guest: true}
+      let(:access_token) {stub_model AccessToken, token: 'wololo'}  
+      let(:sign_in_response) {SignInResponse.new(user, access_token)}
+
+      before do
+        UserCreationService.stub(:new).and_return(service)
+        service.stub(:create_guest_account).and_return(sign_in_response)
+      end
+
+      it 'respond_with 200' do
+        post :create_guest_account
+        expect(response.status).to eql(200)
+      end
+
+      it 'render a sign_in_response object' do
+        post :create_guest_account
+        expected_response = {
+            user: {
+                id: user.id,
+                name: user.name,
+                email: user.email,
+                guest: user.guest
+              },
+            access_token: {
+              token: access_token.token,
+              token_type: 'bearer'
+            }
+          }
+        expect(response.body).to eql(expected_response.to_json)
+      end
+    end
+  end
+
   describe 'GET #me' do
     it 'respond_with 200' do
       get :me

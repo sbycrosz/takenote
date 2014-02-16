@@ -1,9 +1,5 @@
 [
 	{
-		"title": "Or a simple (and boring) todos list",
-		"body": "<ol><li>Buy gift for mom</li><li>Pick up the milk</li><li>Submit monthly report</li><li>Return library books</li><li>Order stationary</li><li>Take out the trash</li><li>Wash dishes</li></ol>"
-	},
-	{
 		"title": "Or code snippets",
 		"body": "<p><strong>Setup</strong></p><p><code>bower install</code><br /><code>cd vendor/bootswatch</code><br /><code>ln -s bower_components/bootstrap/dist/fonts fonts</code><br /><code>cd ../..</code></p><p><strong>Deployment</strong></p><p><code>grunt dist<br />cd dist</code><br /><code>cp -r ../vendor/font-awesome/fonts /assets/fonts</code><br /><code>ln -s assets/fonts fonts</code><br /><code>git init</code><br /><code>mv index.html home.html</code><br /><code>touch index.php</code><br /><code>echo '&lt;?php include_once(\'home.html\'); ?&gt;' &gt; index.php</code><br /><code>git add .</code><br /><code>git commit -m 'Site updated'</code><br /><code>git remote add heroku <a href='mailto:git@heroku.com:embernote.git'>git@heroku.com:embernote.git<br /></a>git push heroku master --force</code><br /><code>cd ..</code></p><p>&nbsp;</p><p><br /><br /></p>"
 	},
@@ -13,6 +9,6 @@
 	},
 	{
 		"title": "Welcome to EmberNote",
-		"body": "<p><img src='https://dl.dropboxusercontent.com/u/32712438/originalcontent.jpg' alt='logo' width='265' height='52' /></p><p>EmberNote is a web application designed for note-taking (similar to <a href='http://evernote.com' target='_blank'>Evernote</a>). On the side menu we have prepared several examples to help you get started with EmberNote.</p><p>EmberNote was built using <em>Ruby on Rails</em> (backend) and <em>EmberJS</em> (frontend) in 2014 by <a href='http://id.linkedin.com/in/sambya'>Sambya A</a><u>S</u>&nbsp;to distract himself from boredom.&nbsp;Feel free to play around with this demo! or browse the source from github (<a href='https://github.com/sbycrosz/takenote-backend'>backend</a> and <a href='https://github.com/sbycrosz/takenote-frontend'>frontend</a>).</p><p><strong>Features</strong></p><ol><li>Nice looking single page application (thanks EmberJS)</li><li>Nice WYSIWYG editor (thanks tinyMCE)</li><li>Well tested backend (thanks RSpec)</li><li>Well documented APIs&nbsp;(thanks Apiary)</li><li>Demo site (thanks Heroku)</li></ol>"
+		"body": "<p><img src='https://dl.dropboxusercontent.com/u/32712438/originalcontent.jpg' alt='logo' width='265' height='52' /></p><p>EmberNote is a web application designed for note-taking (similar to <a href='http://evernote.com' target='_blank'>Evernote</a>). On the side menu we have prepared several examples to help you get started with EmberNote.</p><p>EmberNote was built using <em>Ruby on Rails</em> (backend) and <em>EmberJS</em> (frontend) in 2014 by <a href='http://id.linkedin.com/in/sambya'>Sambya A</a><u>S</u>&nbsp;.&nbsp;Feel free to play around with this demo! or browse the source from github (<a href='https://github.com/sbycrosz/takenote-backend'>backend</a> and <a href='https://github.com/sbycrosz/takenote-frontend'>frontend</a>).</p><p><strong>Features</strong></p><ol><li>Nice looking single page application (thanks EmberJS)</li><li>Nice WYSIWYG editor (thanks tinyMCE)</li><li>Well tested backend (thanks RSpec)</li><li>Well documented APIs&nbsp;(thanks Apiary)</li><li>Demo site (thanks Heroku)</li></ol>"
 	}
 ]

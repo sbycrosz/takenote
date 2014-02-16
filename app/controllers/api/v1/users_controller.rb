@@ -1,8 +1,14 @@
 class Api::V1::UsersController < Api::V1::ApplicationController
-  skip_before_filter :authenticate_user!, only: :create
+  skip_before_filter :authenticate_user!, only: [:create, :create_guest_account]
 
   def create
     UserCreationService.new(user_params).create.tap do |sign_in_response|
+      render json: sign_in_response
+    end
+  end
+
+  def create_guest_account
+    UserCreationService.new.create_guest_account.tap do |sign_in_response|
       render json: sign_in_response
     end
   end

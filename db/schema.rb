@@ -88,8 +88,10 @@ ActiveRecord::Schema.define(version: 20140124045249) do
     t.string   "password_digest"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.boolean  "guest",           default: false
   end
 
   add_index "users", ["email"], name: "index_users_on_email", unique: true, using: :btree
+  add_index "users", ["guest"], name: "index_users_on_guest", using: :btree
 
 end
