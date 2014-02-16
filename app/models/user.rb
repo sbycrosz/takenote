@@ -11,10 +11,13 @@ class User < ActiveRecord::Base
   validates_uniqueness_of :email, unless: :guest?
   validate :validates_old_password, on: :update, unless: :guest?
 
-  has_many :notes
-  has_many :tags
+  has_many :notes, dependent: :destroy
+  has_many :tags, dependent: :destroy
 
   delegate :create_welcome_notes, to: :notes
+  
+  scope :guest, -> {where(guest: true)}
+  
   private
 
   def validates_old_password
